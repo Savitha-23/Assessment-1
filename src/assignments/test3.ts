@@ -218,10 +218,67 @@ const monthlySales: number[] = [
     11000
 ];
 
-let totalSales: number = 72000;
-let incentive: number = 6000;
-let penalty: number = 1000;
-let highSalesDays: number = 4;
+let totalSales: number = 0;
+let incentive: number = 0;
+let penalty: number = 0;
+let highSalesDays: number = 0;
 let bestSales: number = 0;
-let commission: number = 3600;
-console.log(" 5th Question Unable to solve so many confusions need assistance");
+let commission: number = 0;
+
+console.log("Employee Name :", employeeName);
+for (let day = 0; day < monthlySales.length; day++) {
+    console.log("Day :", day+1);
+    console.log("Sales :", monthlySales[day]);
+
+    totalSales = totalSales + monthlySales[day]!;
+
+    if (monthlySales[day]! > bestSales) {
+        bestSales = monthlySales[day]!;
+    }
+    if (monthlySales[day]! >= 15000) {
+        console.log("Excellent Sales");
+
+        incentive = incentive + 2000;
+        highSalesDays++;
+
+
+    }else if (monthlySales[day]! >= 10000) {
+        console.log("Good Sales");
+
+        incentive = incentive + 1000;
+        highSalesDays++;
+    } else {
+        console.log("Poor Sales");
+
+        penalty = penalty + 500;
+    } 
+
+}
+commission = totalSales * 0.05;
+const averageSales = totalSales / monthlySales.length;
+const finalSalary = 30000 + incentive + commission - penalty;
+
+console.log("Total Sales :", totalSales);
+console.log("Average Sales :", averageSales);
+console.log("Highest Sales :", bestSales);
+console.log("High Sales Days :", highSalesDays);
+console.log("Incentive :", incentive);
+console.log("Penalty :", penalty);
+console.log("Commission :", commission);
+
+if (totalSales >= monthlyTarget &&
+    highSalesDays >= 5 &&
+    bestSales >= 18000
+) {
+    console.log("Employee Rating : Outstanding"); 
+} else if (
+    totalSales >= monthlyTarget
+)
+
+  {console.log("Employee Rating : Excellent");  
+} else {
+    console.log("Employee Rating : Needs Improvement");
+}
+
+console.log("Final Salary :", finalSalary);
+console.log("Assessment Completed");
